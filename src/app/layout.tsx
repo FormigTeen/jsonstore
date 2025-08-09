@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './global.css'
+import './theme.css'
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'],             // estilos desejados
+  display: 'swap',
+  variable: '--font-roboto',           // opcional, se quiser usar CSS var
+});
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
         {children}
       </body>
     </html>
