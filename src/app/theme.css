@@ -2,10 +2,23 @@
     font-size: 13px !important;
 }
 
-.font-600 {
-    font-weight: 600 !important;
+.font-600 { font-weight: 600 !important;}
+.font-700 { font-weight: 700 !important; }
+
+.title-md {
+    font-size: 36px !important;
+    line-height: 1.1em !important;
+    margin: 20px 0 20px 0;
 }
 
 .w-75 {
     width: 75% !important;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.p-30-section {
+    padding: 30px 5%;
 }
