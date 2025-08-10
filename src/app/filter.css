@@ -1,0 +1,29 @@
+/* container com fades laterais de indicação de scroll */
+.swipe-fade::before,
+.swipe-fade::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 28px;
+    pointer-events: none; /* não bloqueia cliques/arrasto */
+    z-index: 5;
+}
+.swipe-fade::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+.swipe-fade::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+/* se usa tema escuro, troque os brancos por a cor do fundo do container */
+@media (prefers-color-scheme: dark) {
+    .swipe-fade::before {
+        background: linear-gradient(to right, rgba(18,18,18,1), rgba(18,18,18,0));
+    }
+    .swipe-fade::after {
+        background: linear-gradient(to left, rgba(18,18,18,1), rgba(18,18,18,0));
+    }
+}
