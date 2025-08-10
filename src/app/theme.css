@@ -1,9 +1,11 @@
-.font-13 {
-    font-size: 13px !important;
-}
+.font-13 { font-size: 13px !important; }
+.font-14 { font-size: 14px !important; }
+.font-15 { font-size: 15px !important; }
 
 .font-600 { font-weight: 600 !important;}
 .font-700 { font-weight: 700 !important; }
+
+.min-vh-70 { min-height: 70vh !important; }
 
 .title-md {
     font-size: 36px !important;
@@ -62,4 +64,10 @@ article .overlay3:before {
 
 .article-inner:hover .overlay3:before {
     opacity: 0.75 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif !important;
+    color: #000;
+    font-weight: 300;
 }

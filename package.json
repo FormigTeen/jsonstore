@@ -9,13 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-switch": "^1.2.5",
     "bootstrap": "^5.3.7",
+    "bootstrap-icons": "^1.13.1",
+    "bootstrap5-toggle": "^5.1.2",
     "next": "15.4.6",
     "react": "19.1.0",
     "react-bootstrap": "^2.10.10",
     "react-dom": "19.1.0",
     "react-icons": "^5.5.0",
-    "swiper": "^11.2.10"
+    "react-switch": "^7.1.0",
+    "swiper": "^11.2.10",
+    "use-sound": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

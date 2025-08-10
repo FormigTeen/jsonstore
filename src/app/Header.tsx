@@ -21,17 +21,19 @@ export default function Header({
                                    cartHref = "https://gramstore.com.br/nbz/carrinho",
                                }: HeaderProps) {
     return (
-        <Navbar
-            fixed="top"
-            expand="lg"
-            bg="white"
-            variant="light"
-            className="border-bottom p-0"
-            style={{ zIndex: 2000 }}
-        >
-            <Container>
-                {/* Brand */}
-                <Navbar.Brand as={Link} href={brandHref} aria-label="Loja da Juliana" className="w-75 d-flex align-items-center gap-2 font-13 font-600">
+        <>
+            <div className="pt-5 pt-lg-5"></div>
+            <Navbar
+                fixed="top"
+                expand="lg"
+                bg="white"
+                variant="light"
+                className="border-bottom p-0"
+                style={{ zIndex: 2000 }}
+            >
+                <Container>
+                    {/* Brand */}
+                    <Navbar.Brand as={Link} href={brandHref} aria-label="Loja da Juliana" className="w-75 d-flex align-items-center gap-2 font-13 font-600">
           <span className="d-inline-block rounded-circle overflow-hidden" style={{ width: 30, height: 30 }}>
             <Image
                 src="https://gramstore.com.br/storage/23371/logo-loja-juliana-4.png"
@@ -41,19 +43,20 @@ export default function Header({
                 style={{ objectFit: "cover" }}
             />
           </span>
-                    <span className="text-truncate" style={{ maxWidth: 160 }}>Loja da Juliana</span>
-                </Navbar.Brand>
+                        <span className="text-truncate" style={{ maxWidth: 160 }}>Loja da Juliana</span>
+                    </Navbar.Brand>
 
-                {/* If you plan to add more nav items later, keep the toggle/collapse */}
-                {/* Carrinho fora do Collapse => sempre visível */}
-                <Nav className="ms-auto align-items-center order-lg-2">
-                    <Nav.Link as={Link} href={cartHref} className="d-flex align-items-center gap-1 px-0 fw-bold">
-                        <FaShoppingBag aria-hidden="true" />
-                        <Badge bg="primary" className="ms-1">{cartCount}</Badge>
-                        <span className="visually-hidden">Ir para o carrinho</span>
-                    </Nav.Link>
-                </Nav>
-            </Container>
-        </Navbar>
+                    {/* If you plan to add more nav items later, keep the toggle/collapse */}
+                    {/* Carrinho fora do Collapse => sempre visível */}
+                    <Nav className="ms-auto align-items-center order-lg-2">
+                        <Nav.Link as={Link} href={cartHref} className="d-flex align-items-center gap-1 px-0 fw-bold">
+                            <FaShoppingBag aria-hidden="true" />
+                            <Badge bg="primary" className="ms-1">{cartCount}</Badge>
+                            <span className="visually-hidden">Ir para o carrinho</span>
+                        </Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
+        </>
     );
 }
