@@ -5,6 +5,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import './global.css'
 import './theme.css'
 import { Roboto } from 'next/font/google';
+import {CartProvider} from "@/app/[number]/contexts/CartContext";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -37,7 +38,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
