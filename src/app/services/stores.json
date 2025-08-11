@@ -8,9 +8,22 @@
       {
         "title": "Bolsa Fashion Pink",
         "imageUrl": "https://gramstore.com.br/storage/7/pagstore-produto-teste-16.jpg",
-        "price": 399999,
         "categories": [
           "Acessórios", "Moda Feminina"
+        ],
+        "items": [
+          {
+            "title": "Bolsa Fashion Pink",
+            "price": 299999
+          },
+          {
+            "title": "Bolsa Fashion Blue",
+            "price": 399999
+          },
+          {
+            "title": "Bolsa Fashion Other",
+            "price": 199999
+          }
         ]
       }
     ]

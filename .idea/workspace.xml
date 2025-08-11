@@ -31,7 +31,7 @@
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/matheus/Codes/gramstore-react/src/app/[number]/carrinho",
+    "last_opened_file_path": "/home/matheus/Codes/gramstore-react/src/app/[number]/produto/[slug]",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -43,15 +43,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/[number]/produto/[slug]" />
       <recent name="$PROJECT_DIR$/src/app/[number]/carrinho" />
       <recent name="$PROJECT_DIR$/src/app/[number]" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/[number]/produto/[slug]/components" />
+      <recent name="$PROJECT_DIR$/src/app/[number]/components/Filter" />
       <recent name="$PROJECT_DIR$/src/app/[number]/components" />
       <recent name="$PROJECT_DIR$/src/app/[number]" />
       <recent name="$PROJECT_DIR$/src/app/components/Navbar" />
-      <recent name="$PROJECT_DIR$/src/app/services" />
-      <recent name="$PROJECT_DIR$/src/app/components" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -85,7 +86,8 @@
       <updated>1754776574392</updated>
       <workItem from="1754776577427" duration="27494000" />
       <workItem from="1754916707724" duration="40000" />
-      <workItem from="1754927736026" duration="10958000" />
+      <workItem from="1754927736026" duration="11040000" />
+      <workItem from="1754944000164" duration="1495000" />
     </task>
     <servers />
   </component>

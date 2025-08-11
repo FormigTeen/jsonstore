@@ -1,8 +1,6 @@
-import Cover from "@/app/[number]/components/Cover";
 import {getStore} from "@/app/services/stores";
 import Navbar from "@/app/[number]/components/Navbar/Navbar";
-import Catalog from "@/app/[number]/components/Catalog";
-import Filter from "@/app/[number]/components/Filter/Filter";
+import Gallery from "@/app/[number]/produto/[slug]/components/Gallery";
 
 type PageOptions = {
     params: Promise<{ number: string; }>;
@@ -16,9 +14,7 @@ export default async function Home({ params, searchParams }: PageOptions) {
     return (
         <>
             <Navbar store={store} />
-            <Cover store={store} />
-            <Filter store={store} />
-            <Catalog store={store} />
+            <Gallery />
         </>
     );
 }

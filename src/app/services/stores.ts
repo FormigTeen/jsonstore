@@ -11,13 +11,19 @@ export type Store = {
 export type Product = {
     title: string;
     imageUrl: string;
-    price: number;
     categories: string[]
+    items: Item[]
+}
+
+type Item = {
+    title: string;
+    price: number;
 }
 
 export enum Pages {
     HOME = '/',
     CART = '/carrinho',
+    PRODUCT = '/produto',
 }
 
 export const getStore = (id: string) => {

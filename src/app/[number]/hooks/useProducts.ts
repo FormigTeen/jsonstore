@@ -1,10 +1,18 @@
-import {Product, Store} from "@/app/services/stores";
+import {Pages, Product, Store} from "@/app/services/stores";
 import {useStore} from "@/app/[number]/hooks/useStore";
 import memoizeOne from "memoize-one";
 import { getUri as getStringUri } from "@/app/services/string";
 
 export const getUri = (product: Product) =>
-    getStringUri(product.title);
+    [Pages.PRODUCT, getStringUri(product.title)].join("/")
+
+export const getPrice = memoizeOne(
+    (product: Product) =>
+        product.items.map(item => item.price)
+            .sort((a, b) => a - b)
+            .find(Boolean) ?? 0
+)
+
 
 export const getCategoryDictionary = memoizeOne(
     (products: Product[]) =>
