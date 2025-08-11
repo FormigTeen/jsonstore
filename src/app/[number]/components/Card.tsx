@@ -21,7 +21,7 @@ export const Card: FC<CardProps> = ({ product, href, aspectRatio = "1 / 1" }) =>
                         style={{ aspectRatio }}
                     >
                         <Image
-                            src={product.imageUrl}
+                            src={product.imagesUrl.find(Boolean)!}
                             alt={`Imagem de ${product.title}`}
                             fill
                             sizes="(max-width: 576px) 50vw, (max-width: 992px) 25vw, 240px"

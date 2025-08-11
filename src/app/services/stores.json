@@ -7,7 +7,10 @@
     "products": [
       {
         "title": "Bolsa Fashion Pink",
-        "imageUrl": "https://gramstore.com.br/storage/7/pagstore-produto-teste-16.jpg",
+        "description": "Esse é um exemplo de como você pode oferecer uma experiência de compra simples e prática de seus produtos! Aqui nesse espaço você pode descrever seu produtos com as informações necessárias, como num post de redes sociais.\nAh! É esses produtos daqui são só um exemplo, ok? Não está à venda e os valores são apenas demonstrativos \uD83D\uDE42",
+        "imagesUrl": [
+          "https://gramstore.com.br/storage/7/pagstore-produto-teste-16.jpg"
+        ],
         "categories": [
           "Acessórios", "Moda Feminina"
         ],

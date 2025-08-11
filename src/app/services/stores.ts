@@ -10,7 +10,8 @@ export type Store = {
 
 export type Product = {
     title: string;
-    imageUrl: string;
+    description?: string;
+    imagesUrl: string[];
     categories: string[]
     items: Item[]
 }

@@ -1,6 +1,4 @@
-// app/components/Gallery.tsx
 "use client";
-
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, A11y } from "swiper/modules";
@@ -8,10 +6,12 @@ import { Navigation, Pagination, A11y } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import {Product} from "@/app/services/stores";
 
 type Slide = { src: string; alt: string };
 
 type GalleryProps = {
+    product: Product;
     slides?: Slide[];
     className?: string;
     aspectRatio?: string;          // usado apenas no modo "cover"
@@ -26,11 +26,17 @@ const defaultSlides: Slide[] = [
 ];
 
 export default function Gallery({
-                                    slides = defaultSlides,
                                     className = "",
+                                    product,
                                     aspectRatio = "16 / 9",
                                     fit = "contain",
                                 }: GalleryProps) {
+
+    const slides = product.imagesUrl.map(url => ({
+        src: url,
+        alt: product.title || "Imagem do produto",
+    }))
+
     return (
         <section className={`no-padding py-1 mb-4 ${className}`}>
             <div className="container-fluid">
