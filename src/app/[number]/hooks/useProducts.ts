@@ -1,9 +1,10 @@
 import {Product, Store} from "@/app/services/stores";
 import {useStore} from "@/app/[number]/hooks/useStore";
 import memoizeOne from "memoize-one";
+import { getUri as getStringUri } from "@/app/services/string";
 
 export const getUri = (product: Product) =>
-    encodeURIComponent(product.title)
+    getStringUri(product.title);
 
 export const getCategoryDictionary = memoizeOne(
     (products: Product[]) =>
