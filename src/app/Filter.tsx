@@ -9,11 +9,15 @@ import { FreeMode, A11y } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/free-mode";
+import {Store} from "@/app/services/stores";
+import {useProducts} from "@/app/[number]/hooks/useProducts";
+import {useMemo} from "react";
 
 type OrderOption = { value: string; label: string };
 type Category = { slug: string; label: string; active?: boolean };
 
 type FilterProps = {
+    store: Store;
     action?: string;
     orders?: OrderOption[];
     categories?: Category[];
@@ -45,6 +49,7 @@ const defaultCategories: Category[] = [
 ];
 
 export default function Filter({
+    store,
                                    action = "https://gramstore.com.br/nbz",
                                    orders = defaultOrders,
                                    categories = defaultCategories,

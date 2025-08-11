@@ -5,6 +5,14 @@ export type Store = {
     title: string;
     logoUrl: string;
     host: string;
+    products: Product[];
+}
+
+export type Product = {
+    title: string;
+    imageUrl: string;
+    price: number;
+    categories: string[]
 }
 
 export enum Pages {

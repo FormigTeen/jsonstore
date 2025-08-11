@@ -1,7 +1,9 @@
 import Cover from "@/app/[number]/components/Cover";
 import {getStore} from "@/app/services/stores";
 import Navbar from "@/app/[number]/components/Navbar/Navbar";
-import {useStore} from "@/app/[number]/hooks/useStore";
+import Catalog from "@/app/[number]/components/Catalog";
+import Filter from "@/app/Filter";
+import Offers from "@/app/Offers";
 import Banners from "@/app/[number]/components/Banners";
 
 type PageOptions = {
@@ -15,7 +17,8 @@ export default async function Home({ params }: PageOptions) {
         <>
             <Navbar store={store} />
             <Cover store={store} />
-            <Banners />
+            <Filter />
+            <Catalog />
         </>
     );
 }
