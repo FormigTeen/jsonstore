@@ -17,7 +17,8 @@
         "items": [
           {
             "title": "Bolsa Fashion Pink",
-            "price": 299999
+            "price": 299999,
+            "listPrice": 499999
           },
           {
             "title": "Bolsa Fashion Blue",

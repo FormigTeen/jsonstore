@@ -1,10 +1,10 @@
 'use client'
-import {createContext, useContext, useState} from "react";
+import {createContext, FC, useContext, useState} from "react";
 import {useSearchParams} from "next/navigation";
 import {toStringArray} from "@/app/services/string";
 
 export type FilterProps = {
-    categories: [],
+    categories: string[],
     text: string,
     addCategory: (category: string) => void,
     setText: (text: string) => void,
@@ -34,7 +34,9 @@ export const availableOrderDictionary: Record<number, string> = {
     8: "Mais Recentes",
 }
 
-export const FilterProvider = ({ children }) => {
+export const FilterProvider: FC<
+    { children: React.ReactNode }
+> = ({ children }) => {
     const searchParams = useSearchParams()
     const categoria = searchParams.get("categoria") ?? "";
     const q = searchParams.get("q") ?? "";

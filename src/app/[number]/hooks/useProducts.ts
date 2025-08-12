@@ -6,11 +6,16 @@ import { getUri as getStringUri } from "@/app/services/string";
 export const getUri = (product: Product) =>
     [Pages.PRODUCT, getStringUri(product.title)].join("/")
 
-export const getProducts = (store: Store) => store.products;
+export const getProducts = memoizeOne(
+    (store: Store) => store.products.map(aProduct => ({
+        ...aProduct,
+        slug: getStringUri(aProduct.title)
+    }))
+)
 
 export const findProduct = memoizeOne(
     (store: Store, slug: string) =>
-        getProducts(store).find(product => getStringUri(product.title) === slug)
+        getProducts(store).find(product => product.slug === slug)
 )
 
 export const getPrice = memoizeOne(

@@ -16,9 +16,10 @@ export type Product = {
     items: Item[]
 }
 
-type Item = {
+export type Item = {
     title: string;
     price: number;
+    listPrice?: number;
 }
 
 export enum Pages {

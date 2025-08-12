@@ -5,52 +5,34 @@ import { useState, useMemo } from "react";
 import Switch from "react-switch";
 import { FaCheckCircle, FaShoppingBag } from "react-icons/fa";
 import useSound from "use-sound";
-import {FaBagShopping, FaCartPlus} from "react-icons/fa6";
-
-type Item = { id: number | string; title: string; priceText: string; compareAtText?: string };
+import { FaCartPlus} from "react-icons/fa6";
+import {Product} from "@/app/services/stores";
+import {toString} from "@/app/services/money";
+import {useCart} from "@/app/[number]/contexts/CartContext";
+import {useAtom} from "jotai/react/useAtom";
 
 type ListProps = {
-    items: Item[];
-    action?: string;
-    csrfToken?: string;
+    product: Product;
     onSelectionChange?: (ids: (string | number)[]) => void;
-    alertIfEmpty?: string;
 };
 
 export default function List({
-                                 items,
-                                 action = "https://gramstore.com.br/nbz/carrinho",
-                                 csrfToken,
+    product,
                                  onSelectionChange,
-                                 alertIfEmpty = "Você precisa selecionar um produto",
                              }: ListProps) {
+    const items = product.items
     const [selected, setSelected] = useState<Record<string, boolean>>({});
     const [play] = useSound("https://actions.google.com/sounds/v1/buttons/wood_plank_flicks.ogg", { volume: 0.5 });
-
-    const selectedIds = useMemo(
-        () => items.map(i => String(i.id)).filter(id => selected[id]),
-        [items, selected]
-    );
+    const selectedIds = [] as string[];
+    const { products } = useCart()
 
     return (
         <section className="pt-0">
             <div className="container">
-                <form
-                    id="list-form"
-                    method="POST"
-                    action={action}
-                    onSubmit={e => {
-                        if (selectedIds.length === 0) {
-                            e.preventDefault();
-                            alert(alertIfEmpty);
-                        }
-                    }}
-                >
-                    {csrfToken && <input type="hidden" name="_token" value={csrfToken} />}
                     <div className="row">
                         <div className="col-md-6 offset-md-3 col-12">
                             {items.map((it, idx) => {
-                                const id = String(it.id);
+                                const id = "";
                                 return (
                                     <div key={id}>
                                         {idx === 0 && <hr className="m-0 light" />}
@@ -58,8 +40,8 @@ export default function List({
                                             <div className="col-9 p-0">
                                                 <h3 className="font-15 text-black font-600 trunc-3 mb-1 mt-0">{it.title}</h3>
                                                 <p className="font-14 font-400 text-primary mt-0 mb-0 py-0">
-                                                    {it.priceText}
-                                                    {it.compareAtText && <span className="font-300 text-muted mx-2 text-riscado">{it.compareAtText}</span>}
+                                                    {toString(it.price)}
+                                                    {it.listPrice && <span className="font-300 text-muted mx-2 text-riscado">{toString(it.listPrice)}</span>}
                                                 </p>
                                             </div>
                                             <div className="col-3 p-0 text-end">
@@ -102,7 +84,6 @@ export default function List({
                             })}
                         </div>
                     </div>
-                </form>
             </div>
         </section>
     );
