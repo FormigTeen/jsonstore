@@ -2,15 +2,22 @@ import {Pages, Product, Store} from "@/app/services/stores";
 import {useStore} from "@/app/[number]/hooks/useStore";
 import memoizeOne from "memoize-one";
 import { getUri as getStringUri } from "@/app/services/string";
+import {HasSlug} from "@/app/services/cart";
+
+type HasTitle = {
+    title: string;
+}
+
+export const addSlug = <T extends HasTitle>(value: T): T & HasSlug => ({
+    ...value,
+    slug: getStringUri(value.title)
+})
 
 export const getUri = (product: Product) =>
     [Pages.PRODUCT, getStringUri(product.title)].join("/")
 
 export const getProducts = memoizeOne(
-    (store: Store) => store.products.map(aProduct => ({
-        ...aProduct,
-        slug: getStringUri(aProduct.title)
-    }))
+    (store: Store) => store.products.map(addSlug)
 )
 
 export const findProduct = memoizeOne(

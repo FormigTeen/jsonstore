@@ -3,6 +3,7 @@ import {getStore} from "@/app/services/stores";
 import Navbar from "@/app/[number]/components/Navbar/Navbar";
 import Catalog from "@/app/[number]/components/Catalog";
 import Filter from "@/app/[number]/components/Filter/Filter";
+import Confirm from "@/app/Confirm";
 
 type PageOptions = {
     params: Promise<{ number: string; }>;
@@ -19,6 +20,7 @@ export default async function Home({ params, searchParams }: PageOptions) {
             <Cover store={store} />
             <Filter store={store} />
             <Catalog store={store} />
+            <Confirm store={store} />
         </>
     );
 }

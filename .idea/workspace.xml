@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="930ec897-5b04-4c8b-8613-f3c54c65a3cc" name="Changes" comment="" />
+    <list default="true" id="930ec897-5b04-4c8b-8613-f3c54c65a3cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/Confirm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/Confirm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[number]/produto/[slug]/components/List.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[number]/components/Navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[number]/components/Navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[number]/contexts/CartContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[number]/contexts/CartContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[number]/hooks/useProducts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[number]/hooks/useProducts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[number]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[number]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[number]/produto/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[number]/produto/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/cart.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/cart.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +99,9 @@
       <workItem from="1754927736026" duration="11040000" />
       <workItem from="1754944000164" duration="4173000" />
       <workItem from="1755004365141" duration="15000" />
-      <workItem from="1755026297632" duration="4390000" />
+      <workItem from="1755026297632" duration="4545000" />
+      <workItem from="1755128818481" duration="4120000" />
+      <workItem from="1755175755855" duration="14000" />
     </task>
     <servers />
   </component>

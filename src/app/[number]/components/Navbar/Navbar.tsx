@@ -8,6 +8,8 @@ import Badge from "react-bootstrap/Badge";
 import {FaShoppingBag} from "react-icons/fa";
 import { Pages, Store} from "@/app/services/stores";
 import {useStore} from "@/app/[number]/hooks/useStore";
+import {useCart} from "@/app/[number]/contexts/CartContext";
+import {useDeferredValue, useMemo} from "react";
 
 type Props = {
     store: Store
@@ -15,7 +17,13 @@ type Props = {
 
 export default function Navbar({ store }: Props) {
 
-    const cartCount = 0
+    const { products } = useCart()
+    const deferredProducts = useDeferredValue(products)
+    const cartCount = useMemo(
+        () => Object.values(deferredProducts)
+            .flatMap((product) => Object.values(product))
+            .length, [deferredProducts]);
+
     const { title, logoUrl, getPageUrl } = useStore(store)
 
     const navbarBaseProps = {

@@ -7,26 +7,30 @@ export type HasSlug = {
     slug: string
 }
 
-export type ProductCart = {
+type StoreSlug = string
+type ProductSlug = string
+type ItemSlug = string
+export type Cart = Record<StoreSlug, Record<ProductSlug, Record<ItemSlug, ItemCart>>>
+
+export type ItemCart = {
     store: Pick<Store, 'id'>
     product: Product & HasSlug
     item: Item & HasSlug
     quantity: number
 }
-export const persistCartAtom = atomWithStorage<ProductCart[]>(
+
+export const persistCartAtom = atomWithStorage<Cart>(
     'cart',
-    [],
+    {}
 )
 
 export const cartAtom = withImmer(persistCartAtom)
 
-
-export const cartByStoreAtom = atomFamily(
-    (store: Pick<Store, 'id'>) =>
-        atom((get) => get(cartAtom).filter((c) => c.store.id === store.id))
-)
-
-export const cartByProductAtom = atomFamily(
-    (product: HasSlug) =>
-        atom((get) => get(cartAtom).filter((c) => c.product.slug === product.slug))
-)
+export const storeCartAtom = atomFamily(
+    (store: Store) => {
+        return atom<Record<ProductSlug, Record<ItemSlug, ItemCart>>>((get) => {
+            const cart = get(cartAtom);
+            return cart[store.id] || {};
+        });
+    }
+);

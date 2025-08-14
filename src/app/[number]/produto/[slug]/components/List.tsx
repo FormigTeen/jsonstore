@@ -1,15 +1,15 @@
 // app/components/List.tsx
 "use client";
 
-import { useState, useMemo } from "react";
 import Switch from "react-switch";
-import { FaCheckCircle, FaShoppingBag } from "react-icons/fa";
-import useSound from "use-sound";
+import { FaCheckCircle } from "react-icons/fa";
 import { FaCartPlus} from "react-icons/fa6";
 import {Product} from "@/app/services/stores";
 import {toString} from "@/app/services/money";
 import {useCart} from "@/app/[number]/contexts/CartContext";
 import {useAtom} from "jotai/react/useAtom";
+import {addSlug} from "@/app/[number]/hooks/useProducts";
+import Confirm from "@/app/Confirm";
 
 type ListProps = {
     product: Product;
@@ -17,14 +17,15 @@ type ListProps = {
 };
 
 export default function List({
-    product,
+    product: propProduct,
                                  onSelectionChange,
                              }: ListProps) {
-    const items = product.items
-    const [selected, setSelected] = useState<Record<string, boolean>>({});
-    const [play] = useSound("https://actions.google.com/sounds/v1/buttons/wood_plank_flicks.ogg", { volume: 0.5 });
-    const selectedIds = [] as string[];
-    const { products } = useCart()
+    const product = addSlug(propProduct);
+    const items = product.items.map(addSlug)
+    const { products, setItem } = useCart()
+    const itemCarts = products[product.slug] || {};
+    console.log(itemCarts)
+    const isSelected = (id: string) => Boolean(itemCarts[id]);
 
     return (
         <section className="pt-0">
@@ -32,9 +33,8 @@ export default function List({
                     <div className="row">
                         <div className="col-md-6 offset-md-3 col-12">
                             {items.map((it, idx) => {
-                                const id = "";
                                 return (
-                                    <div key={id}>
+                                    <div key={it.slug}>
                                         {idx === 0 && <hr className="m-0 light" />}
                                         <div className="row mx-0 py-2 align-items-center">
                                             <div className="col-9 p-0">
@@ -47,11 +47,13 @@ export default function List({
                                             <div className="col-3 p-0 text-end">
                                                 <Switch
                                                     onChange={(checked) => {
-                                                        setSelected(prev => ({ ...prev, [id]: checked }));
-                                                        onSelectionChange?.(selectedIds);
-                                                        play();
+                                                        setItem({
+                                                            product,
+                                                            item: it,
+                                                            quantity: checked ? 1 : 0,
+                                                        })
                                                     }}
-                                                    checked={!!selected[id]}
+                                                    checked={isSelected(it.slug)}
                                                     width={60}
                                                     height={30}
                                                     handleDiameter={24}
@@ -75,7 +77,6 @@ export default function List({
                                                         </div>
                                                     }
                                                 />
-                                                <input type="hidden" name="items_id[]" value={id} />
                                             </div>
                                         </div>
                                         <hr className="m-0 light" />

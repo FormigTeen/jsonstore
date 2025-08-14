@@ -1,14 +1,14 @@
 'use client'
 import React, {useContext} from "react";
 import {useImmerAtom} from "jotai-immer";
-import {cartByStoreAtom, persistCartAtom, ProductCart} from "@/app/services/cart";
+import { persistCartAtom, Cart as CartStorage, ItemCart, storeCartAtom} from "@/app/services/cart";
 import {useParams} from "next/navigation";
 import {getStore} from "@/app/services/stores";
-import {Atom} from "jotai/vanilla/atom";
+import {useAtom} from "jotai";
 
 export type Cart = {
-    products: Atom<ProductCart[]>
-    setItem: (entry: ProductCart) => void
+    products: Record<string, Record<string, ItemCart>>
+    setItem: (entry: Omit<ItemCart, 'store'>) => void
 }
 
 export type StoreParams = {
@@ -16,7 +16,7 @@ export type StoreParams = {
 }
 
 const CartContext = React.createContext<Cart>({
-    products: cartByStoreAtom(getStore("")),
+    products: {} as const,
     setItem: () => {},
 });
 
@@ -26,25 +26,44 @@ export const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     const { number: id } = useParams<{ number: string }>()
 
     const store = getStore(id)
-    const products = cartByStoreAtom(store)
+    const [products] = useAtom(storeCartAtom(store))
     const [, setItemOnStorage] = useImmerAtom(
         persistCartAtom
     )
 
-    const setItem = (entry: ProductCart) => {
-        setItemOnStorage((prev: ProductCart[]) => {
-            const index = prev.findIndex(
-                prevItem =>
-                prevItem.store.id === entry.store.id
-                    && prevItem.product.slug === entry.product.slug
-                    && prevItem.item.slug === entry.item.slug
-                )
-            ;
-            if (index !== -1) {
-                prev[index].quantity = entry.quantity;
-            } else {
-                prev.push(entry);
+    const setItem = (entry: Omit<ItemCart, 'store'>) => {
+        setItemOnStorage((prev: CartStorage) => {
+            const storeId = store.id;
+            const productSlug = entry.product.slug;
+            const itemSlug = entry.item.slug;
+
+            if (!prev[storeId]) {
+                prev[storeId] = {};
             }
+
+            if (!prev[storeId][productSlug]) {
+                prev[storeId][productSlug] = {};
+            }
+
+            if (entry.quantity > 0) {
+                prev[storeId][productSlug][itemSlug] = {
+                    ...entry,
+                    store: { id: store.id },
+                };
+            } else {
+                if (prev[storeId][productSlug][itemSlug]) {
+                    delete prev[storeId][productSlug][itemSlug];
+                }
+
+                if (Object.keys(prev[storeId][productSlug]).length === 0) {
+                    delete prev[storeId][productSlug];
+                }
+
+                if (Object.keys(prev[storeId]).length === 0) {
+                    delete prev[storeId];
+                }
+            }
+
         });
     }
 
