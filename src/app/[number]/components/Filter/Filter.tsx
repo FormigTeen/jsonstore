@@ -1,4 +1,3 @@
-// app/components/Filter.tsx
 "use client";
 import "./filter.css"
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -28,7 +27,7 @@ export default function Filter({
                                }: FilterProps) {
 
     const { categoryDictionary } = useProducts(store)
-    const { categories: selectedCategories, clear, text, setText, order, setOrder } = useFilter()
+    const { categories: selectedCategories, clear, text, setText, order, setOrder, toggleCategory } = useFilter()
     const orders = useMemo(
         () => Object.entries(availableOrderDictionary)
             .map(([value, label]) => ({
@@ -43,7 +42,7 @@ export default function Filter({
             (cat) => ({
                 slug: getUri(cat),
                 label: cat,
-                isActive: selectedCategories.includes(cat.toLowerCase()),
+                isActive: cat.toLowerCase() in selectedCategories,
             })
         ),
         [categoryDictionary, selectedCategories]
@@ -121,7 +120,10 @@ export default function Filter({
                                 .map(
                                     (cat) => (
                                         <SwiperSlide key={cat.slug}  style={{ width: "auto" }}>
-                                            <CategorySlide category={cat} isActive={cat.isActive} />
+                                            <CategorySlide
+                                                onClick={() => toggleCategory(cat.label.toLowerCase())}
+                                                category={cat} isActive={cat.isActive}
+                                            />
                                         </SwiperSlide>
                                     )
                                 )

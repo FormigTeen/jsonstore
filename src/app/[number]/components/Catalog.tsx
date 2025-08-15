@@ -16,15 +16,10 @@ export default function Catalog({
                                     className = "",
                                 }: CatalogProps) {
 
-    const { text } = useFilter()
+    const { text, applyFilter } = useFilter()
     const { products } = useProducts(store);
 
-    const deferredText = useDeferredValue(text);
-
-    const filteredProducts = products.filter(product => {
-        if ( !deferredText || deferredText.trim() === "" ) return true;
-        return product.title.toLowerCase().includes(deferredText.toLowerCase());
-    });
+    const filteredProducts = applyFilter(products)
 
     return (
         <section className={`py-1 mb-4 ${className}`}>

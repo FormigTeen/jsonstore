@@ -37,6 +37,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "yarn",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.User-Defined File Types",
     "ts.external.directory.path": "/home/matheus/Codes/gramstore-react/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -96,7 +97,7 @@
       <workItem from="1755208503889" duration="10921000" />
       <workItem from="1755267350478" duration="641000" />
       <workItem from="1755271422340" duration="2408000" />
-      <workItem from="1755287293481" duration="2291000" />
+      <workItem from="1755287293481" duration="4055000" />
     </task>
     <servers />
   </component>
