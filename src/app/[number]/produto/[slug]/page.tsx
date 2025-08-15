@@ -1,5 +1,5 @@
 import {getStore} from "@/app/services/stores";
-import Navbar from "@/app/[number]/components/Navbar/Navbar";
+import Navbar from "@/app/[number]/_components/Navbar/Navbar";
 import Gallery from "@/app/[number]/produto/[slug]/components/Gallery";
 import {findProduct} from "@/app/[number]/hooks/useProducts";
 import Text from "@/app/[number]/produto/[slug]/components/Text";

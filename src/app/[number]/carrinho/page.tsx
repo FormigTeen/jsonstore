@@ -1,5 +1,5 @@
 import {getStore} from "@/app/services/stores";
-import Navbar from "@/app/[number]/components/Navbar/Navbar";
+import Navbar from "@/app/[number]/_components/Navbar/Navbar";
 import Cart from "@/app/[number]/carrinho/components/Cart";
 
 type PageOptions = {

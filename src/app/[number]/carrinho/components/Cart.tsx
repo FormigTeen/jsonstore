@@ -7,8 +7,8 @@ import {toString} from "@/app/services/money";
 import {ItemCart} from "@/app/stores/cart";
 import {useAtom} from "jotai";
 import {nameAtom, zipAtom} from "@/app/stores/user";
-import {useZip} from "@/app/hooks/useZip";
-import {useAddress} from "@/app/hooks/useAddress";
+import {useZip} from "@/app/_hooks/useZip";
+import {useAddress} from "@/app/_hooks/useAddress";
 
 type CartItem = {
     id: number | string;

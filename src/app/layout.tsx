@@ -9,6 +9,8 @@ import {CartProvider} from "@/app/[number]/contexts/CartContext";
 import {FilterProvider} from "@/app/[number]/contexts/FilterContext";
 import {QueryProvider} from "@/app/providers/QueryProvider";
 import {Suspense} from "react";
+import {TransitionProvider} from "@/app/contexts/transition-context";
+import TransitionWrapper from "@/app/components/transition-wrapper";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -43,7 +45,9 @@ export default function RootLayout({
     <html lang="en">
     <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
     <QueryProvider>
-        {children}
+      <TransitionProvider>
+          {children}
+      </TransitionProvider>
     </QueryProvider>
     </body>
     </html>

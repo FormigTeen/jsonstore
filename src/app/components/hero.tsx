@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { useState, FormEvent } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,19 +8,19 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import stores from '../services/stores.json';
+import {useDirectionalRouter} from "@/app/_hooks/useDirectionalRouter";
 
 type Props = {
     logoUrl: string;
     className?: string;
-    makeHref?: (code: string) => string;
 };
 
 export default function Hero({
                                         logoUrl,
                                         className = '',
-                                        makeHref = (code) => `/${encodeURIComponent(code)}`,
                                     }: Props) {
-    const router = useRouter();
+    const makeHref = (code: string) => `/${encodeURIComponent(code)}`
+    const router = useDirectionalRouter();
     const [code, setCode] = useState('');
     const [touched, setTouched] = useState(false);
     const [hasError, setHasError] = useState(false);

@@ -38,8 +38,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
       <CartProvider>
           <Suspense>
               <FilterProvider>
@@ -47,7 +45,5 @@ export default function RootLayout({
               </FilterProvider>
           </Suspense>
       </CartProvider>
-      </body>
-      </html>
   );
 }
