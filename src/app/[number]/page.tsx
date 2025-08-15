@@ -7,11 +7,10 @@ import Confirm from "@/app/Confirm";
 
 type PageOptions = {
     params: Promise<{ number: string; }>;
-    searchParams?: Promise<{ categoria?: string; }>;
 }
 
 
-export default async function Home({ params, searchParams }: PageOptions) {
+export default async function Home({ params }: PageOptions) {
     const number = (await params).number
     const store = getStore(number)
     return (

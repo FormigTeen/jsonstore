@@ -23,13 +23,36 @@ const CartContext = React.createContext<Cart>({
 export const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 
 
-    const { number: id } = useParams<{ number: string }>()
+    const params = useParams() as StoreParams | null;
 
-    const store = getStore(id)
-    const [products] = useAtom(storeCartAtom(store))
+
+    const id = useMemo<string>(() => {
+        const raw = params?.['number']
+        return Array.isArray(raw) ? raw[0] : raw || ''
+    }, [params])
+
+
+    const store = useMemo(() => {
+        if (!id) return null
+        try {
+            const s = getStore(id)
+            return s ?? null
+        } catch {
+            return null
+        }
+    }, [id])
+
+
+    const [products] = useAtom(storeCartAtom(store ?? { id: '' }))
     const [, setItemOnStorage] = useImmerAtom(
         persistCartAtom
     )
+
+    if (!store) {
+        // enquanto não temos store (ou id inválido), exponha um contexto “inócuo”
+        const empty: Cart = { products: {}, setItem: () => {} }
+        return <CartContext.Provider value={empty}>{children}</CartContext.Provider>
+    }
 
     const setItem = (entry: Omit<ItemCart, 'store'>) => {
         setItemOnStorage((prev: CartStorage) => {

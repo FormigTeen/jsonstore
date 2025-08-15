@@ -1,6 +1,6 @@
 import Link from "next/link";
-import {getUrl, Product} from "@/app/services/stores";
-import {getPrice, getUri} from "@/app/[number]/hooks/useProducts";
+import { Product} from "@/app/services/stores";
+import {getPrice} from "@/app/[number]/hooks/useProducts";
 import Image from "next/image";
 import {toString} from "@/app/services/money";
 import {FC} from "react";

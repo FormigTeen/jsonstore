@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaShoppingBag, FaArrowLeft } from "react-icons/fa";
+import { FaShoppingBag } from "react-icons/fa";
 import {FaStore} from "react-icons/fa6";
 
 interface TitleCartProps {

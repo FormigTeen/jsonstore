@@ -18,13 +18,6 @@ type GalleryProps = {
     fit?: "contain" | "cover";     // "contain" = não corta (padrão)
 };
 
-const defaultSlides: Slide[] = [
-    { src: "https://gramstore.com.br/storage/8/pagstore-produto-teste-07.jpg", alt: "Exemplo de Look Completo 01" },
-    { src: "https://gramstore.com.br/storage/9/pagstore-produto-teste-05.jpg", alt: "Exemplo de Look Completo 01" },
-    { src: "https://gramstore.com.br/storage/10/pagstore-produto-teste-09.jpg", alt: "Exemplo de Look Completo 01" },
-    { src: "https://gramstore.com.br/storage/11/pagstore-produto-teste-02.jpg", alt: "Exemplo de Look Completo 01" },
-];
-
 export default function Gallery({
                                     className = "",
                                     product,

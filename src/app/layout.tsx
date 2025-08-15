@@ -8,6 +8,8 @@ import { Roboto } from 'next/font/google';
 import {CartProvider} from "@/app/[number]/contexts/CartContext";
 import {FilterProvider} from "@/app/[number]/contexts/FilterContext";
 import {QueryProvider} from "@/app/providers/QueryProvider";
+import {RouteNormalizer} from "@/app/components/RouterNormalizer";
+import {Suspense} from "react";
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -41,11 +43,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
+      <RouteNormalizer />
       <QueryProvider>
         <CartProvider>
-          <FilterProvider>
-            {children}
-          </FilterProvider>
+            <Suspense>
+                <FilterProvider>
+                    {children}
+                </FilterProvider>
+            </Suspense>
         </CartProvider>
       </QueryProvider>
       </body>

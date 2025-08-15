@@ -16,7 +16,6 @@ type ListProps = {
 
 export default function List({
     product: propProduct,
-                                 onSelectionChange,
                              }: ListProps) {
     const product = addSlug(propProduct);
     const items = product.items.map(addSlug)

@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export",
+    "build:static": "next build && next export",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-switch": "^1.2.5",

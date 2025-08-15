@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <script>
+        (function() {
+            // Caminho original solicitado (ex.: /meu-repo/produtos/42?tab=detalhes#ancora)
+            var fullPath = window.location.pathname + window.location.search + window.location.hash;
+
+            // Detecta se é repo raiz (owner.github.io) ou repo de projeto (owner.github.io/repo)
+            var pathParts = window.location.pathname.split('/').filter(Boolean);
+            var ownerIsRoot = window.location.hostname.endsWith('.github.io') &&
+                pathParts.length > 0 &&
+                (pathParts[0] + '.github.io' === window.location.hostname);
+
+            // basePath: "", ou "/<repo>"
+            var basePath = '';
+            if (!ownerIsRoot && pathParts.length > 0) {
+                basePath = '/' + pathParts[0]; // primeiro segmento é o nome do repo
+            }
+
+            // Redireciona para o index com o original em ?p=
+            // Ex.: /<repo>/?p=/produtos/42?tab=detalhes#ancora
+            var target = basePath + '/?p=' + encodeURIComponent(fullPath.replace(basePath, '') || '/');
+
+            // Usa location.replace para não poluir o histórico
+            window.location.replace(target);
+        })();
+    </script>
+</head>
+<body>Redirecting…</body>
+</html>

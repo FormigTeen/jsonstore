@@ -27,7 +27,7 @@ export const persistCartAtom = atomWithStorage<Cart>(
 export const cartAtom = withImmer(persistCartAtom)
 
 export const storeCartAtom = atomFamily(
-    (store: Store) => {
+    (store: Pick<Store, "id">) => {
         return atom<Record<ProductSlug, Record<ItemSlug, ItemCart>>>((get) => {
             const cart = get(cartAtom);
             return cart[store.id] || {};

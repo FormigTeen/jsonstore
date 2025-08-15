@@ -23,13 +23,8 @@ type CartProps = {
 
 type Step = 0 | 1 | 2 | 3 | 4; // 0 Itens, 1 Nome, 2 CEP, 3 Endereço, 4 Pagamento
 
-const BRL = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-});
 
 export default function Cart({
-                                 items: initialItems,
                              }: CartProps) {
 
     const router = useRouter();

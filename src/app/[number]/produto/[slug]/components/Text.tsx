@@ -1,7 +1,5 @@
 "use client";
-
 import { OverlayTrigger, Tooltip, Button } from "react-bootstrap";
-import Link from "next/link";
 import {Product} from "@/app/services/stores";
 
 type TextProps = {
@@ -20,11 +18,11 @@ export default function Text({
         padding: 0,
     };
 
-    const handleShare = (e: React.MouseEvent) => {
+    const handleShare = () => {
 
     }
 
-    const handleMessage = (e: React.MouseEvent) => {
+    const handleMessage = () => {
 
     }
 

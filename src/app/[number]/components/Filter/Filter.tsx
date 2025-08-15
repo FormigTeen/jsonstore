@@ -12,8 +12,6 @@ import {FC, useMemo} from "react";
 import {getUri} from "@/app/services/string";
 import {availableOrderDictionary, useFilter} from "@/app/[number]/contexts/FilterContext";
 
-type OrderOption = { value: string; label: string };
-
 type Category = {
     slug: string;
     label: string;

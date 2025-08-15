@@ -1,11 +1,8 @@
 'use client'
-import Link from "next/link";
-import Image from "next/image";
 import {useFilter} from "@/app/[number]/contexts/FilterContext";
-import {useDeferredValue, useMemo} from "react";
-import {getPrice, getUri, useProducts} from "@/app/[number]/hooks/useProducts";
-import {getUrl, Product, Store} from "@/app/services/stores";
-import {toString} from "@/app/services/money";
+import {useDeferredValue} from "react";
+import { getUri, useProducts} from "@/app/[number]/hooks/useProducts";
+import {getUrl, Store} from "@/app/services/stores";
 import {Card} from "@/app/[number]/components/Card";
 
 type CatalogProps = {
@@ -17,7 +14,6 @@ type CatalogProps = {
 export default function Catalog({
                                     store,
                                     className = "",
-                                    aspectRatio = "1 / 1",
                                 }: CatalogProps) {
 
     const { text } = useFilter()

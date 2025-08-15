@@ -1,5 +1,3 @@
-import {Product} from "@/app/services/stores";
-
 export const getUri = (text: string) =>
     encodeURIComponent(text)
 
