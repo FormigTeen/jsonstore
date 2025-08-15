@@ -2,12 +2,12 @@ FROM node:20-alpine
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN yarn
 
 COPY . .
-RUN npm run build
+RUN yarn build
 
-RUN npm install -g pm2
+RUN yarn global pm2
 
 ENV NODE_ENV=production
 EXPOSE 3000
