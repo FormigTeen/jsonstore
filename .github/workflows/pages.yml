@@ -1,4 +1,4 @@
-name: Deploy Next.js Static Export to GitHub Pages
+name: Deploy Next.js Static Export to GitHub Pages (Yarn)
 
 on:
   push:
@@ -20,14 +20,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
+          cache: 'yarn'   # <— cache para Yarn
 
-      # Define NEXT_BASE_PATH dinamicamente:
-      # - se repo == <owner>.github.io => raiz (vazio)
-      # - caso contrário => "/<repo>"
+      - name: Enable Corepack (para Yarn moderno)
+        run: corepack enable
+
+      # Define NEXT_BASE_PATH dinamicamente
       - name: Configure NEXT_BASE_PATH
         shell: bash
         run: |
@@ -39,14 +41,20 @@ jobs:
             echo "NEXT_BASE_PATH=/$REPO" >> $GITHUB_ENV
           fi
 
-      # Build estático
+      - name: Install deps (Yarn)
+        run: |
+          if yarn --version | grep -qE '^(3|4)\.'; then
+            yarn install --immutable
+          else
+            yarn install --frozen-lockfile
+          fi
+
       - name: Build static (next build && next export)
-        run: npm run build:static
         env:
           NODE_ENV: production
+        run: yarn build:static
 
-      # Publica a pasta out/ no GitHub Pages
-      - name: Upload artifact
+      - name: Upload artifact to Pages
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
