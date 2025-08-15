@@ -6,9 +6,16 @@ const repoBase = process.env.NEXT_BASE_PATH ?? ''
 
 
 const nextConfig: NextConfig = {
+    output: 'export',
     images: {
+        unoptimized: true, // necessário para export estático
         remotePatterns: [
-            new URL('https://gramstore.com.br/storage/**'),
+            {
+                protocol: "https",
+                hostname: "gramstore.com.br",
+                port: "",
+                pathname: "/storage/**",
+            },
         ],
     },
     basePath: isProd ? repoBase : '',

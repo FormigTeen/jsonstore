@@ -49,10 +49,10 @@ jobs:
             yarn install --frozen-lockfile
           fi
 
-      - name: Build static (next build && next export)
+      - name: Build static (next build)
         env:
           NODE_ENV: production
-        run: yarn build:static
+        run: yarn build
 
       - name: Upload artifact to Pages
         uses: actions/upload-pages-artifact@v3
