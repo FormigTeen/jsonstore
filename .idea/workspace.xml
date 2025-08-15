@@ -58,11 +58,11 @@
       <recent name="$PROJECT_DIR$/src/app/[number]" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/stores" />
+      <recent name="$PROJECT_DIR$/src/app/[number]/carrinho/components" />
       <recent name="$PROJECT_DIR$/src/app/[number]/produto/[slug]/components" />
       <recent name="$PROJECT_DIR$/src/app/[number]/components/Filter" />
       <recent name="$PROJECT_DIR$/src/app/[number]/components" />
-      <recent name="$PROJECT_DIR$/src/app/[number]" />
-      <recent name="$PROJECT_DIR$/src/app/components/Navbar" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Next.js: server-side">
@@ -102,6 +102,8 @@
       <workItem from="1755026297632" duration="4545000" />
       <workItem from="1755128818481" duration="4120000" />
       <workItem from="1755175755855" duration="14000" />
+      <workItem from="1755207906895" duration="134000" />
+      <workItem from="1755208503889" duration="5159000" />
     </task>
     <servers />
   </component>

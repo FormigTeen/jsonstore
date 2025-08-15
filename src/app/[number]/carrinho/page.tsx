@@ -1,10 +1,6 @@
-import Cover from "@/app/[number]/components/Cover";
 import {getStore} from "@/app/services/stores";
 import Navbar from "@/app/[number]/components/Navbar/Navbar";
-import {useStore} from "@/app/[number]/hooks/useStore";
-import Banners from "@/app/[number]/components/Banners";
-import Cart from "@/app/Cart";
-import Offers from "@/app/Offers";
+import Cart from "@/app/[number]/carrinho/components/Cart";
 
 type PageOptions = {
     params: Promise<{ number: string; }>;

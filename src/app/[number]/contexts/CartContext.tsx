@@ -1,7 +1,7 @@
 'use client'
-import React, {useContext} from "react";
+import React, {useContext, useMemo} from "react";
 import {useImmerAtom} from "jotai-immer";
-import { persistCartAtom, Cart as CartStorage, ItemCart, storeCartAtom} from "@/app/services/cart";
+import { persistCartAtom, Cart as CartStorage, ItemCart, storeCartAtom} from "@/app/stores/cart";
 import {useParams} from "next/navigation";
 import {getStore} from "@/app/services/stores";
 import {useAtom} from "jotai";
@@ -71,6 +71,7 @@ export const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
         products: products,
         setItem: setItem,
     }
+
 
 
 

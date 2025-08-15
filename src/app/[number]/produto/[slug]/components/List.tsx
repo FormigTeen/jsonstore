@@ -7,9 +7,7 @@ import { FaCartPlus} from "react-icons/fa6";
 import {Product} from "@/app/services/stores";
 import {toString} from "@/app/services/money";
 import {useCart} from "@/app/[number]/contexts/CartContext";
-import {useAtom} from "jotai/react/useAtom";
 import {addSlug} from "@/app/[number]/hooks/useProducts";
-import Confirm from "@/app/Confirm";
 
 type ListProps = {
     product: Product;
