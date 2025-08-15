@@ -7,7 +7,8 @@ RUN yarn
 COPY . .
 RUN yarn build
 
-RUN yarn global pm2
+# Install PM2 globally
+RUN yarn global add pm2
 
 ENV NODE_ENV=production
 EXPOSE 3000
