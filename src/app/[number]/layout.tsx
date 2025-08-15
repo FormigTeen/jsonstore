@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import './global.css'
-import './theme.css'
 import { Roboto } from 'next/font/google';
 import {CartProvider} from "@/app/[number]/contexts/CartContext";
 import {FilterProvider} from "@/app/[number]/contexts/FilterContext";
@@ -40,12 +38,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-    <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
-    <QueryProvider>
-        {children}
-    </QueryProvider>
-    </body>
-    </html>
+      <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable}`}>
+      <CartProvider>
+          <Suspense>
+              <FilterProvider>
+                  {children}
+              </FilterProvider>
+          </Suspense>
+      </CartProvider>
+      </body>
+      </html>
   );
 }

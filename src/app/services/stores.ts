@@ -34,4 +34,4 @@ export const getStore = (id: string) => {
 
 export const getUrl =
     (store: Store) =>
-        (uri: Pages | string) => `${store.host}/${store.id}/${uri}`
+        (uri: Pages | string) => `/${store.id}/${uri}`

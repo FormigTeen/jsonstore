@@ -5,6 +5,7 @@ import {useStore} from "@/app/[number]/hooks/useStore";
 import {Pages, Store} from "@/app/services/stores";
 import {useCart} from "@/app/[number]/contexts/CartContext";
 import {useDeferredValue, useMemo} from "react";
+import Link from "next/link";
 
 
 type ConfirmProps = {
@@ -40,21 +41,21 @@ export default function Confirm({
                         <div className="col-md-6 offset-md-3 col-12">
                             <div className="row g-2 align-items-stretch">
                                 <div className="col-10">
-                                    <a
+                                    <Link
                                         href={getPageUrl(Pages.CART)}
                                         className="btn btn-primary btn-lg fw-semibold text-uppercase w-100 h-100"
                                     >
                                         ENVIAR MENSAGEM
-                                    </a>
+                                    </Link>
                                 </div>
                                 {hasStore && (<div className="col-2">
-                                    <a
+                                    <Link
                                         href={getPageUrl(Pages.HOME)}
                                         className="btn btn-outline-primary btn-lg w-100 h-100 d-flex align-items-center justify-content-center"
                                         aria-label="Voltar"
                                     >
                                         <FaStoreAlt size={22} />
-                                    </a>
+                                    </Link>
                                 </div>)}
                             </div>
                         </div>
