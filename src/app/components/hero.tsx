@@ -28,7 +28,7 @@ export default function Hero({
 
     function onSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        const value = code.trim();
+        const value = code.replace(" ", "").trim();
         if (!value) {
             setTouched(true);
             return;
