@@ -2,7 +2,7 @@
 import React, {useContext, useMemo} from "react";
 import {useImmerAtom} from "jotai-immer";
 import { persistCartAtom, Cart as CartStorage, ItemCart, storeCartAtom} from "@/app/stores/cart";
-import {useParams} from "next/navigation";
+import {notFound, useParams} from "next/navigation";
 import {getStore} from "@/app/services/stores";
 import {useAtom} from "jotai";
 
@@ -41,6 +41,10 @@ export const CartProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
             return null
         }
     }, [id])
+
+    if (!store) {
+        notFound();
+    }
 
 
     const [products] = useAtom(storeCartAtom(store ?? { id: '' }))
