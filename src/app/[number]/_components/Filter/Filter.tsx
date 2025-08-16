@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import {Store} from "@/app/services/stores";
 import {useProducts} from "@/app/[number]/hooks/useProducts";
-import {FC, useMemo} from "react";
+import React, {FC, useMemo} from "react";
 import {getUri} from "@/app/services/string";
 import {availableOrderDictionary, useFilter} from "@/app/[number]/contexts/FilterContext";
 
@@ -119,7 +119,7 @@ export default function Filter({
                             {categories
                                 .map(
                                     (cat) => (
-                                        <SwiperSlide key={cat.slug}  style={{ width: "auto" }}>
+                                        <SwiperSlide key={`${cat.slug}-${cat.isActive}`}  style={{ width: "auto" }}>
                                             <CategorySlide
                                                 onClick={() => toggleCategory(cat.label.toLowerCase())}
                                                 category={cat} isActive={cat.isActive}
@@ -141,23 +141,24 @@ type CategorySlideProps = {
     category: Category;
     onClick?: (category: Category) => void;
 }
-const CategorySlide: FC<CategorySlideProps> = ({
-    isActive = false,
-                                                   category,
-    onClick,
-                                               }) => {
 
-    const handleClick = () => onClick && onClick(category);
+const CategorySlide: FC<CategorySlideProps> = ({ isActive = false, category, onClick }) => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+        onClick?.(category);
+        e.currentTarget.blur();           // remove foco no mobile
+    };
 
     return (
-            <button
-                onClick={handleClick}
-                className={`btn btn-sm case-u font-11 font-500 me-1 ${
-                    isActive ? "btn-primary text-white" : "btn-outline-primary"
-                }`}
-                aria-pressed={isActive}
-            >
-                {category.label}
-            </button>
+        <button
+            type="button"
+            onClick={handleClick}
+            className={`btn btn-sm case-u font-11 font-500 me-1 ${
+                isActive ? "btn-primary text-white" : "btn-outline-primary"
+            }`}
+            aria-pressed={isActive}
+            style={{ WebkitTapHighlightColor: "transparent" }} // opcional: sem highlight cinza do iOS
+        >
+            {category.label}
+        </button>
     );
-}
+};

@@ -21,8 +21,8 @@ export default async function Home({ params }: PageOptions) {
                 <Cover store={store} />
                 <Filter store={store} />
                 <Catalog store={store} />
-                <Confirm store={store} />
             </TransitionWrapper>
+            <Confirm store={store} />
         </>
     );
 }
