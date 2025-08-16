@@ -29,6 +29,7 @@ export default function Confirm({ store, hasStore = false }: ConfirmProps) {
     return (
         <>
             <Block />
+            <Block />
             <div
                 className="position-fixed bottom-0 start-0 end-0 bg-body border-top"
                 style={{ zIndex: 1050 }}
@@ -79,4 +80,4 @@ export default function Confirm({ store, hasStore = false }: ConfirmProps) {
     );
 }
 
-const Block = () => <div className="pb-5 pt-lg-5"></div>;
+const Block = () => <div className="pb-5 pb-lg-5"></div>;

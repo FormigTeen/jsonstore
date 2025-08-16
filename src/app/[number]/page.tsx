@@ -16,8 +16,8 @@ export default async function Home({ params }: PageOptions) {
     const store = getStore(number)
     return (
         <>
+            <Navbar store={store} />
             <TransitionWrapper>
-                <Navbar store={store} />
                 <Cover store={store} />
                 <Filter store={store} />
                 <Catalog store={store} />

@@ -31,7 +31,7 @@
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/matheus/Codes/gramstore-react/src/app/[number]",
+    "last_opened_file_path": "/home/matheus/Codes/gramstore-react/src/app/[number]/produto/[slug]/components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -44,6 +44,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/[number]/produto/[slug]/components" />
       <recent name="$PROJECT_DIR$/src/app/[number]" />
       <recent name="$PROJECT_DIR$/src/app/[number]/produto/[slug]" />
       <recent name="$PROJECT_DIR$/src/app/[number]/carrinho" />
@@ -98,6 +99,7 @@
       <workItem from="1755267350478" duration="641000" />
       <workItem from="1755271422340" duration="2408000" />
       <workItem from="1755287293481" duration="11458000" />
+      <workItem from="1755307857785" duration="3852000" />
     </task>
     <servers />
   </component>

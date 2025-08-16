@@ -1,30 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { Roboto } from 'next/font/google';
 import {CartProvider} from "@/app/[number]/contexts/CartContext";
 import {FilterProvider} from "@/app/[number]/contexts/FilterContext";
-import {QueryProvider} from "@/app/providers/QueryProvider";
 import {Suspense} from "react";
 
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['400', '700'],             // estilos desejados
-  display: 'swap',
-  variable: '--font-roboto',           // opcional, se quiser usar CSS var
-});
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -77,3 +77,37 @@ h1, h2, h3, h4, h5, h6 {
     color: #000;
     font-weight: 300;
 }
+
+
+/* sombra mais evidente */
+.card-horizontal {
+    will-change: transform, box-shadow;
+    transition: box-shadow .2s ease;
+    /* base forte */
+    box-shadow:
+            0 8px 24px rgba(0, 0, 0, 0.18),
+            0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.card-horizontal:hover {
+    /* hover bem marcado */
+    box-shadow:
+            0 16px 48px rgba(0, 0, 0, 0.24),
+            0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+/* opção: um toque de elevação no foco via teclado */
+.card-horizontal:focus-within {
+    box-shadow:
+            0 0 0 3px rgba(13,110,253,.15),
+            0 16px 48px rgba(0, 0, 0, 0.24),
+            0 6px 16px rgba(0, 0, 0, 0.14);
+}
+
+/* respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+    .card-horizontal { transition: box-shadow .2s ease; }
+}
+
+.card-horizontal { min-height: 160px; }          /* altura mínima do card */
+.card-horizontal > div:first-child { height: 100%; aspect-ratio: auto; } /* a imagem estica em altura */

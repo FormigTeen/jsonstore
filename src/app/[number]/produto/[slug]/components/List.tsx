@@ -1,6 +1,5 @@
 // app/components/List.tsx
 "use client";
-
 import Switch from "react-switch";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaCartPlus} from "react-icons/fa6";
@@ -10,12 +9,14 @@ import {useCart} from "@/app/[number]/contexts/CartContext";
 import {addSlug} from "@/app/[number]/hooks/useProducts";
 
 type ListProps = {
+    className?: string;
     product: Product;
     onSelectionChange?: (ids: (string | number)[]) => void;
 };
 
 export default function List({
     product: propProduct,
+    className = "",
                              }: ListProps) {
     const product = addSlug(propProduct);
     const items = product.items.map(addSlug)
@@ -25,7 +26,7 @@ export default function List({
     const isSelected = (id: string) => Boolean(itemCarts[id]);
 
     return (
-        <section className="pt-0">
+        <section className={`pt-0 ${className}`}>
             <div className="container">
                     <div className="row">
                         <div className="col-md-6 offset-md-3 col-12">
